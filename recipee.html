@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipe Selection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    
+    label, select {
+      display: block;
+      margin-bottom: 10px;
+      color: #555;
+    }
+    
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    input[type="submit"] {
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    
+    #recipeDetails {
+      display: none;
+      margin-top: 30px;
+    }
+    
+    #recipeDetails h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Recipe Selection</h1>
+    <label for="recipeType">Select Recipe Type:</label>
+    <select id="recipeType">
+      <option value="1">Veg</option>
+      <option value="2">Non-Veg</option>
+    </select>
+    
+    <label for="recipeList">Select Recipe:</label>
+    <select id="recipeList">
+      <!-- Options for Veg Recipes -->
+      <optgroup label="Veg Recipes">
+        <option value="sandwich">Sandwich</option>
+        <option value="pizza">Pizza</option>
+        <option value="pav bhaji">Pav Bhaji</option>
+        <option value="palak rice">Palak Rice</option>
+        <option value="baby potato fry">Baby Potato Fry</option>
+      </optgroup>
+      
+      <!-- Options for Non-Veg Recipes -->
+      <optgroup label="Non-Veg Recipes">
+        <option value="butter chicken">Butter Chicken</option>
+        <option value="chicken biryani">Chicken Biryani</option>
+        <option value="grilled salmon">Grilled Salmon</option>
+        <option value="beef stir-fry">Beef Stir-Fry</option>
+        <option value="shrimp scampi">Shrimp Scampi</option>
+      </optgroup>
+    </select>
+    
+    <input type="submit" value="Submit" onclick="selectRecipe()">
+    
+    <div id="recipeDetails">
+      <h2>Recipe Details</h2>
+      <textarea id="recipeDescription" readonly></textarea>
+    </div>
+  </div>
+
+  <script>
+    function selectRecipe() {
+      var recipeType = document.getElementById("recipeType").value;
+      var recipeList = document.getElementById("recipeList").value;
+      var recipeDescription = document.getElementById("recipeDescription");
+      
+      var detailsContainer = document.getElementById("recipeDetails");
+      detailsContainer.style.display = "block";
+      
+      // Update recipe description based on the selected recipe
+      if (recipeType === "1") {
+        // Veg Recipes
+        if (recipeList === "sandwich") {
+          recipeDescription.value = "This is a delicious sandwich recipe.\n\nIngredients:\n- Bread\n- Vegetables\n- Cheese\n- Sauce\n\nInstructions:\n1. Gather all the ingredients.\n2. Spread sauce on one slice of bread.\n3. Add vegetables and cheese.\n4. Cover with another slice of bread.\n5. Grill or toast the sandwich until crispy.\n6. Serve hot.";
+        } else if (recipeList === "pizza") {
+          recipeDescription.value = "This is a tasty pizza recipe.\n\nIngredients:\n- Pizza dough\n- Tomato sauce\n- Cheese\n- Toppings of your choice\n\nInstructions:\n1. Preheat the oven to the specified temperature.\n2. Roll out the pizza dough and place it on a baking sheet.\n3. Spread tomato sauce evenly over the dough.\n4. Sprinkle cheese over the sauce.\n5. Add your favorite toppings.\n6. Bake the pizza in the oven until the crust is golden and the cheese is melted.\n7. Slice and serve hot.";
+        } else if (recipeList === "pav bhaji") {
+          recipeDescription.value = "This is a popular street food recipe.\n\nIngredients:\n- Potatoes\n- Mixed vegetables\n- Pav bread\n- Spices\n- Butter\n\nInstructions:\n1. Boil and mash the potatoes and mixed vegetables.\n2. Heat butter in a pan and add spices.\n3. Add the mashed potatoes and mixed vegetables.\n4. Mix well and cook for a few minutes.\n5. Toast the pav bread with butter.\n6. Serve the bhaji with toasted pav bread.";
+        } else if (recipeList === "palak rice") {
+          recipeDescription.value = "This is a healthy spinach rice recipe.\n\nIngredients:\n- Spinach\n- Rice\n- Onion\n- Spices\n\nInstructions:\n1. Blanch the spinach and blend it into a puree.\n2. Cook rice separately.\n3. Heat oil in a pan and sauté onions.\n4. Add the spinach puree and spices.\n5. Mix in the cooked rice and stir well.\n6. Serve hot.";
+        } else if (recipeList === "baby potato fry") {
+          recipeDescription.value = "This is a crispy baby potato fry recipe.\n\nIngredients:\n- Baby potatoes\n- Spices\n- Oil\n\nInstructions:\n1. Boil the baby potatoes until tender.\n2. Heat oil in a pan.\n3. Add the boiled potatoes and spices.\n4. Fry the potatoes until crispy and golden.\n5. Serve hot.";
+        } else {
+          recipeDescription.value = "No recipe selected.";
+        }
+      } else if (recipeType === "2") {
+        // Non-Veg Recipes
+        if (recipeList === "butter chicken") {
+          recipeDescription.value = "This is a delicious butter chicken recipe.\n\nIngredients:\n- Chicken\n- Yogurt\n- Tomato sauce\n- Spices\n- Butter\n\nInstructions:\n1. Marinate the chicken in yogurt and spices.\n2. Grill or bake the marinated chicken until cooked.\n3. Heat butter in a pan.\n4. Add tomato sauce and spices.\n5. Add the grilled chicken and cook for a few minutes.\n6. Serve hot with rice or naan.";
+        } else if (recipeList === "chicken biryani") {
+          recipeDescription.value = "This is a flavorful chicken biryani recipe.\n\nIngredients:\n- Chicken\n- Rice\n- Spices\n- Onion\n- Yogurt\n\nInstructions:\n1. Marinate the chicken in yogurt and spices.\n2. Cook rice separately.\n3. Heat oil in a pan and sauté onions.\n4. Add the marinated chicken and cook until tender.\n5. Layer the cooked rice and chicken in a pot.\n6. Cover and cook on low heat until flavors are absorbed.\n7. Serve hot with raita.";
+        } else if (recipeList === "grilled salmon") {
+          recipeDescription.value = "This is a grilled salmon recipe.\n\nIngredients:\n- Salmon fillet\n- Lemon juice\n- Olive oil\n- Spices\n\nInstructions:\n1. Marinate the salmon fillet with lemon juice, olive oil, and spices.\n2. Preheat the grill.\n3. Grill the salmon on medium heat until cooked through.\n4. Serve hot with a side of vegetables or salad.";
+        } else if (recipeList === "beef stir-fry") {
+          recipeDescription.value = "This is a tasty beef stir-fry recipe.\n\nIngredients:\n- Beef strips\n- Vegetables\n- Soy sauce\n- Spices\n- Oil\n\nInstructions:\n1. Heat oil in a pan or wok.\n2. Add beef strips and cook until browned.\n3. Add vegetables and stir-fry until crisp-tender.\n4. Season with soy sauce and spices.\n5. Stir well and cook for a few more minutes.\n6. Serve hot with rice or noodles.";
+        } else if (recipeList === "shrimp scampi") {
+          recipeDescription.value = "This is a delicious shrimp scampi recipe.\n\nIngredients:\n- Shrimp\n- Garlic\n- Butter\n- Lemon juice\n- White wine\n\nInstructions:\n1. Heat butter in a pan.\n2. Add minced garlic and sauté until fragrant.\n3. Add shrimp and cook until pink.\n4. Pour in lemon juice and white wine.\n5. Cook for a few more minutes.\n6. Serve hot with pasta or crusty bread.";
+        } else {
+          recipeDescription.value = "No recipe selected.";
+        }
+      } else {
+        recipeDescription.value = "No recipe selected.";
+      }
+    }
+  </script>
+</body>
+</html>
